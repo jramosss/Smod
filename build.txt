@@ -1,0 +1,3 @@
+author = Shuls
+version = 0.1
+displayName = Shuls Mod
