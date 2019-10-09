@@ -8,7 +8,8 @@ namespace Smod.Commands {
         public override string Usage => "coords";
         public override void Action(CommandCaller caller, string input, string[] args) {
             Player player = Main.LocalPlayer;
-            Main.NewText(player.position.X + "," + player.position.Y);
+            Main.NewText("X = " + player.position.X);
+            Main.NewText("Y = " + player.position.Y);
         }
     }
 }

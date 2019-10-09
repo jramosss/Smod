@@ -6,12 +6,12 @@ namespace Smod.Commands {
     public class AnywhereButHere : ModCommand {
         public override CommandType Type => CommandType.World;
         public override string Command => "ABH";
-        public override string Usage => "ABH";
+        public override string Usage => "abh";
         public override string Description => "Gets you out of a tricky situation!";
         public override void Action(CommandCaller caller, string input, string[] args) {
             Player player = Main.LocalPlayer;
-            player.position.X = Main.rand.Next(Main.maxTilesX-200*16,0);
-            player.position.Y = Main.rand.Next((int)Main.worldSurface*16,(int)Main.worldSurface*16+100);
+            player.position.X = Main.rand.Next(-200,Main.maxTilesX-200*16);
+            player.position.Y = Main.rand.Next((int)Main.worldSurface*16-100,(int)Main.worldSurface*16);
         }
         /*
         private unsafe Vector2 TestTeleport(ref bool canSpawn, int teleportStartX, int teleportRangeX, int teleportStartY, int teleportRangeY) {
