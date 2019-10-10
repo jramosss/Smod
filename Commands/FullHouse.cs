@@ -135,12 +135,12 @@ namespace Smod.Commands {
             }
             foreach (int id in town) {
                 if(!NPC.AnyNPCs(id)){
-                    newNPC =  NPC.NewNPC((int)player.Center.X +100*16,(int)player.Center.Y, id);        //Set X and Y to the position you want to spawn the NPC at
+                    newNPC =  NPC.NewNPC(Main.spawnTileX*16 ,Main.spawnTileY * 16, id);        //Set X and Y to the position you want to spawn the NPC at
                     if (newNPC == NPCID.PartyGirl) {
-                        Main.NewText(Main.npc[newNPC].GivenName + "the " + Main.npc[newNPC].GivenOrTypeName +  "has arrived!", 255,20,147);
+                        Main.NewText(Main.npc[newNPC].GivenName + "the " + Main.npc[newNPC].TypeName +  "has arrived!", 255,20,147);
                     }
                     else {
-                        Main.NewText(Main.npc[newNPC].GivenName + "the " + Main.npc[newNPC].GivenOrTypeName + "has arrived!", 50,50,200);
+                        Main.NewText(Main.npc[newNPC].GivenName + "the " + Main.npc[newNPC].TypeName + "has arrived!", 50,50,200);
                     }
                 }
             }
