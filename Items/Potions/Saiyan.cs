@@ -21,7 +21,7 @@ namespace Smod.Items.Potions {
             item.consumable = true;
             item.rare = 4;
             item.value = Item.buyPrice(gold: 4);
-            item.buffType = mod.BuffType<Buffs.UltraInstinct>(); //Specify an existing buff to be applied when used.
+            item.buffType = ModContent.BuffType<Buffs.UltraInstinct>(); //Specify an existing buff to be applied when used.
             item.buffTime = 14400; //The amount of time the buff declared in item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.
         }
 

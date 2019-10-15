@@ -3,7 +3,6 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using System.Collections.Generic;
 using System;
-
 namespace Smod.Commands {
     public static class NpcRequisites {
         public static bool dryad = (NPC.downedBoss1 ||NPC.downedBoss2 || NPC.downedBoss3 || NPC.downedMechBossAny);
@@ -18,7 +17,7 @@ namespace Smod.Commands {
         public static bool Ciborg = NPC.downedPlantBoss;
         public static bool Pirate = NPC.downedPirates;
         public static bool TaxesCollector = NPC.taxCollector;
-        //public static bool Truffle =  Hacer una casa en el bioma de truffle
+        //public static bool Truffle =  NPC.spawn
         public static bool  IsChristmas () {
             DateTime date = DateTime.Now;
             return (date.Month == 12 && date.Day == 25);
@@ -56,7 +55,6 @@ namespace Smod.Commands {
         public static bool PartyGirl (Player player) {
             return (player.townNPCs > 12);
         }
-
     }
     public class FullHouse : ModCommand {
         delegate bool NpcReq();

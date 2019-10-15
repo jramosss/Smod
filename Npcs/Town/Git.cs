@@ -1,3 +1,4 @@
+/* 
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -54,7 +55,7 @@ namespace Smod.Npcs.Town {
             }
             return false;
         }
-        /* If someday i want to implement histerical housing conditions for my NPC 
+         If someday i want to implement histerical housing conditions for my NPC 
         public override bool CheckConditions(int left, int right, int top, int bottom) {
 			int score = 0;
 			for (int x = left; x <= right; x++) {
@@ -70,7 +71,7 @@ namespace Smod.Npcs.Town {
 			}
 			return score >= (right - left) * (bottom - top) / 2;
 		}
-        */
+        
         public override string TownNPCName() {
 			switch (WorldGen.genRand.Next(4)) {
 				case 0:
@@ -112,3 +113,4 @@ namespace Smod.Npcs.Town {
 		}
     }
 }
+*/
