@@ -19,22 +19,21 @@ namespace Smod.Items.Weapons {
             item.melee = false;
             item.noMelee = true;
             item.magic = true;
-            item.useAmmo = ;
-            item.useAnimation = 10;
+            item.useAnimation = 12;
             item.useStyle = ItemUseStyleID.HoldingOut;
-            item.UseSound = SoundID.Item1; // TODO: Sound
+            item.UseSound = SoundID.Item10; // TODO: Sound
             item.value = 20000;
             item.rare = 2;
             item.autoReuse = true;
             item.shoot = ProjectileType<Orbs>();
-            item.shootSpeed = 5;
+            item.shootSpeed = 2;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.CoinGun,1);
             recipe.AddIngredient(ItemID.ShadowbeamStaff,1);
             recipe.AddIngredient(ItemID.AdamantiteBar,10);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
