@@ -15,5 +15,6 @@ namespace Smod.Items.Accesories {
 			item.value = Item.sellPrice(silver: 30);
 			item.rare = ItemRarityID.Blue;
 		}
+		
     }
 }

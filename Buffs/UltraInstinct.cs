@@ -17,8 +17,8 @@ namespace Smod.Buffs {
             player = Main.LocalPlayer;
             player.AddBuff(BuffID.Mining,10000);
             player.AddBuff(BuffID.Swiftness,10000);
-            player.maxRunSpeed += 2.7f;
-            player.runAcceleration += 1.5f;
+            player.maxRunSpeed += 2.4f;
+            player.runAcceleration += 1.1f;
             player.jumpBoost = true;
             player.jumpSpeedBoost += 2.7f;
             player.AddBuff(BuffID.StardustGuardianMinion ,7000);
