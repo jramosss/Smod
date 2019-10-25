@@ -7,6 +7,7 @@ namespace Smod.Projectiles {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Orb");
         }
+
         public override void SetDefaults() {
 			projectile.width = 30;
 			projectile.height = 30;
@@ -16,11 +17,17 @@ namespace Smod.Projectiles {
 			projectile.hostile = false;
 			projectile.magic = true;
 			projectile.tileCollide = false;
-			projectile.ignoreWater = false;
+			projectile.ignoreWater = true;
             projectile.friendly = true;
             projectile.direction = Main.LocalPlayer.direction;
 		}
+        public override bool OnTileCollide(Microsoft.Xna.Framework.Vector2 oldVelocity) {
+            this.projectile.Kill(); // Dunno why it ignore tiles anyway
+            return true;
+        }
+
         public float globalAcc = 0;
+
         public float Accelerate (int timeLeft) {
             if (timeLeft == 600) {
                 globalAcc += 0.01f;
@@ -44,6 +51,7 @@ namespace Smod.Projectiles {
 
             return globalAcc;
         }
+
         public override void AI() {
             if (projectile.velocity.X > 0) {
                 projectile.velocity.X = Accelerate(projectile.timeLeft);
@@ -51,7 +59,7 @@ namespace Smod.Projectiles {
             else {
                 projectile.velocity.X = -(Accelerate(projectile.timeLeft));
             }
-            Main.NewText("Speed: " + projectile.velocity.X);
+            // Main.NewText("Speed: " + projectile.velocity.X); DEBUG
             projectile.velocity.Y = 0f;
         }
 

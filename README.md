@@ -28,5 +28,5 @@ The mod includes:
 > > Bosses:
 > > PrimarySchool, Nothing Yet
 > > IDEAS: 
-> > Make an axe that works like timber mod in minecraft
+> > Make an axe that cuts all trees in a row
 > > Make a staff/sword that shoots a water wave (Hard)

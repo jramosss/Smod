@@ -11,22 +11,23 @@ namespace Smod.Items.Weapons {
             Tooltip.SetDefault("Yells a weird word");
         }
         public override void SetDefaults() {
-            item.damage = 120;
+            item.damage = 50;
             item.width = 30;
             item.height = 30;
-            item.mana = 20;
+            item.mana = 10;
             item.knockBack = 1;
             item.melee = false;
             item.noMelee = true;
             item.magic = true;
-            item.useAnimation = 12;
+            item.useAnimation = 2;
+            item.useTime = 12;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.UseSound = SoundID.Item10; // TODO: Sound
             item.value = 20000;
             item.rare = 2;
             item.autoReuse = true;
             item.shoot = ProjectileType<Orbs>();
-            item.shootSpeed = 2;
+            item.shootSpeed = 10;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);

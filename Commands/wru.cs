@@ -11,11 +11,13 @@ namespace Smod.Commands {
         public override void Action(CommandCaller caller, string input, string[] args) {
             float posX = 0;
             float posY = 0;
+            string name = "";
             switch(args[0]){
                 case "armsdealer":
                     if (Main.npc[NPCID.ArmsDealer].active) {
                         posX = Main.npc[NPCID.ArmsDealer].position.X;
                         posY = Main.npc[NPCID.ArmsDealer].position.Y;
+                        name = Main.npc[NPCID.ArmsDealer].FullName; // TODO, put names to all npcs just like this, now is too late
                     }
                     break;
 
@@ -50,8 +52,8 @@ namespace Smod.Commands {
                     posY = Main.npc[NPCID.Stylist].position.Y;
                     break;
             } // I will make more when i need it, far by now
-            Main.NewText("args[0] X: " + posX);
-            Main.NewText("args[0] Y: " + posY);
+            Main.NewText("X: " + posX);
+            Main.NewText("Y: " + posY);
         }
     }
 }
