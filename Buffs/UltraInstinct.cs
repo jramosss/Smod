@@ -11,6 +11,7 @@ namespace Smod.Buffs {
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = false;
 			canBeCleared = false;
+            Main.time = 3000;
 		}
 
         public override void Update(Player player, ref int buffIndex) {

@@ -22,34 +22,40 @@ namespace Smod.Commands {
                     break;
 
                 case "nurse":
-                    if (Main.npc[NPCID.ArmsDealer].active)
-                    posX = Main.npc[NPCID.Nurse].position.X;
-                    posY = Main.npc[NPCID.Nurse].position.Y;
+                    if (Main.npc[NPCID.ArmsDealer].active){
+                        posX = Main.npc[NPCID.Nurse].position.X;
+                        posY = Main.npc[NPCID.Nurse].position.Y;
+                    }
                     break;    
                 case "dyetrader":
-                    if (Main.npc[NPCID.DyeTrader].active)
-                    posX = Main.npc[NPCID.DyeTrader].position.X;
-                    posY = Main.npc[NPCID.DyeTrader].position.Y;
+                    if (Main.npc[NPCID.DyeTrader].active) {
+                        posX = Main.npc[NPCID.DyeTrader].position.X;
+                        posY = Main.npc[NPCID.DyeTrader].position.Y;
+                    }
                     break;
                 case "guide":
-                    if (Main.npc[NPCID.Guide].active)
-                    posX = Main.npc[NPCID.Guide].position.X;
-                    posY = Main.npc[NPCID.Guide].position.Y;
+                    if (Main.npc[NPCID.Guide].active) {
+                        posX = Main.npc[NPCID.Guide].position.X;
+                        posY = Main.npc[NPCID.Guide].position.Y;
+                    }
                     break;
                 case "angler":
-                    if (Main.npc[NPCID.Angler].active)
-                    posX = Main.npc[NPCID.Angler].position.X;
-                    posY = Main.npc[NPCID.Angler].position.Y;
+                    if (Main.npc[NPCID.Angler].active) {
+                        posX = Main.npc[NPCID.Angler].position.X;
+                        posY = Main.npc[NPCID.Angler].position.Y;
+                    }
                     break;
                 case "dryad":
-                    if (Main.npc[NPCID.Dryad].active)
-                    posX = Main.npc[NPCID.Dryad].position.X;
-                    posY = Main.npc[NPCID.Dryad].position.Y;
+                    if (Main.npc[NPCID.Dryad].active) {
+                        posX = Main.npc[NPCID.Dryad].position.X;
+                        posY = Main.npc[NPCID.Dryad].position.Y;
+                    }
                     break;
                 case "stylist":
-                    if (Main.npc[NPCID.Stylist].active)
-                    posX = Main.npc[NPCID.Stylist].position.X;
-                    posY = Main.npc[NPCID.Stylist].position.Y;
+                    if (Main.npc[NPCID.Stylist].active){
+                        posX = Main.npc[NPCID.Stylist].position.X;
+                        posY = Main.npc[NPCID.Stylist].position.Y;
+                    }
                     break;
             } // I will make more when i need it, far by now
             Main.NewText("X: " + posX);
