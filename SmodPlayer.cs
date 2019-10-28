@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Smod;
+using Terraria.DataStructures;
 namespace Smod {
     public class SmodPlayer : ModPlayer {
         public bool HolyGrace = true;
@@ -15,17 +16,17 @@ namespace Smod {
             Tile tile;
             foreach(Point coord in player.TouchedTiles){
                 tile = Main.tile[coord.X, coord.Y];
-                if(tile.type == ModContent.TileType<Tiles.HolyDirt>() && player.HasItem(ModContent.ItemType<Items.Accesories.HolyFeet>()) /*&& player.HasItem(mod.ItemType("HolyFeet")))*/) {
-                    player.lifeRegen += 10; 
+                if(tile.type == ModContent.TileType<Tiles.HolyDirt>() && HolyGrace /*player.HasItem(ModContent.ItemType<Items.Accesories.HolyFeet>()) && player.HasItem(mod.ItemType("HolyFeet")))*/) {
+                    //player.AddBuff(ModContent.BuffType<Buffs.HolyGrace>(),100);
+                    player.lifeRegen += 6;
                     Main.NewText("Healing"); // Debug
                 }
             }
         }
-        /* 
-        public override void PreUpdateBuffs() {
-            
+        public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource) {
+            player.respawnTimer = 180;
+            base.Kill(damage, hitDirection, pvp, damageSource);
         }
-        */
     }
         namespace Items.Accesories {
             internal class HolyFeet : ModItem {
