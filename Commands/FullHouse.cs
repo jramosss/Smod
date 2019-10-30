@@ -17,6 +17,7 @@ namespace Smod.Commands {
         public static bool Ciborg = NPC.downedPlantBoss;
         public static bool Pirate = NPC.downedPirates;
         public static bool TaxesCollector = NPC.taxCollector;
+        public static bool Git = Main.LocalPlayer.townNPCs >= 12 && Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Weapons.UltraShark>());
         //public static bool Truffle =  NPC.spawn
         public static bool  IsChristmas () {
             DateTime date = DateTime.Now;
@@ -74,6 +75,9 @@ namespace Smod.Commands {
             Predicate<Player> PartyGirl = new Predicate<Player>(NpcRequisites.PartyGirl);
             List <int> town = new List <int> {NPCID.Guide};
             int newNPC = 0;
+            if (NpcRequisites.Git) {
+                town.Add(ModContent.NPCType<Npcs.Town.Git>());
+            }
             if (NpcRequisites.dryad) {
                 town.Add(NPCID.Dryad);
             }

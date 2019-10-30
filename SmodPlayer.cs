@@ -27,6 +27,15 @@ namespace Smod {
             player.respawnTimer = 180;
             base.Kill(damage, hitDirection, pvp, damageSource);
         }
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit) {
+            if ((proj.type == ProjectileID.Bullet || proj.type == ProjectileID.BulletHighVelocity || proj.type == ProjectileID.CrystalBullet 
+                || proj.type == ProjectileID.CursedBullet || proj.type == ProjectileID.IchorBullet)&& Main.rand.NextBool(25)){
+                player.immune = true;
+                player.immuneTime = 30;
+                player.immuneNoBlink = true;
+                Main.NewText("Invincible"); //Debugging
+            }
+        }
     }
         namespace Items.Accesories {
             internal class HolyFeet : ModItem {

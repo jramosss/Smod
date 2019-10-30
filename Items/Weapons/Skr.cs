@@ -7,7 +7,7 @@ using Smod.Projectiles;
 namespace Smod.Items.Weapons {
     public class Skr : ModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Skrrrr");
+            DisplayName.SetDefault("Exponential Shooter");
             Tooltip.SetDefault("Yells a weird word");
         }
         public override void SetDefaults() {

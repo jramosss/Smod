@@ -30,3 +30,4 @@ The mod includes:
 > > IDEAS: 
 > > Make an axe that cuts all trees in a row
 > > Make a staff/sword that shoots a water wave (Hard)
+> > Create a workbench.

@@ -1,10 +1,11 @@
-/* 
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Smod;
+using static Terraria.ModLoader.ModContent;
 
 namespace Smod.Npcs.Town {
     public class Git : ModNPC {
@@ -50,12 +51,13 @@ namespace Smod.Npcs.Town {
 			}
 		}
         public override bool CanTownNPCSpawn(int numTownNPCs, int money) {
-            if (player.HasItem(mod.ItemType("UltraShark")) || player.HasItem(ItemID.CellPhone)) {
+			Player player = Main.LocalPlayer;
+            if (player.HasItem(mod.ItemType("UltraShark")) || player.HasItem(ItemID.CellPhone) && player.activeNPCs >= 12) {
                 return true;
             }
             return false;
         }
-         If someday i want to implement histerical housing conditions for my NPC 
+        /*If someday i want to implement histerical housing conditions for my NPC 
         public override bool CheckConditions(int left, int right, int top, int bottom) {
 			int score = 0;
 			for (int x = left; x <= right; x++) {
@@ -71,6 +73,7 @@ namespace Smod.Npcs.Town {
 			}
 			return score >= (right - left) * (bottom - top) / 2;
 		}
+		*/
         
         public override string TownNPCName() {
 			switch (WorldGen.genRand.Next(4)) {
@@ -84,10 +87,10 @@ namespace Smod.Npcs.Town {
 					return "Giiiiiiiiit";
 			}
 		}
-        public override void FindFrame(int frameHeight) {}
+        //public override void FindFrame(int frameHeight) {}
         public override string GetChat() {
 			int Cyborg = NPC.FindFirstNPC(NPCID.Cyborg);
-			if (Cyborg >= 0 && Main.rand.NextBool(4)) {
+			if (Cyborg > 0 && Main.rand.NextBool(4)) {
 				return "I find " + Main.npc[Cyborg].GivenName + " very atractive, dunno why";
 			} 
 			switch (Main.rand.Next(4)) {
@@ -98,19 +101,73 @@ namespace Smod.Npcs.Town {
 				case 2:
 					{
 						// Main.npcChatCornerItem shows a single item in the corner, like the Angler Quest chat.
-						Main.npcChatCornerItem = ItemID.HiveBackpack;
-						return $"Hey, if you find a [i:{ItemID.HiveBackpack}], I can upgrade it for you. Wait, where did i hear that?";
+						Main.npcChatCornerItem = ModContent.ItemType<Items.Weapons.UltraShark>() ;
+						return $"Hey, if you craft a [i:{ModContent.ItemType<Items.Weapons.UltraShark>()}], I can upgrade it for you. Wait, where did i hear that?";
 					}
 				default:
-					return "Dont make me angry, or u will regret it!";
+					return "Dont make me angry, or i´ll delete all ur commits!";
 			}
 		}
         public override void SetChatButtons(ref string button, ref string button2) {
 			button = Language.GetTextValue("LegacyInterface.28");
 			button2 = "Awesomeify";
-			if (Main.LocalPlayer.HasItem(ItemID.HiveBackpack))
-				button = "Upgrade " + Lang.GetItemNameValue(ItemID.HiveBackpack);
+			if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Weapons.UltraShark>())) {
+				button = "Upgrade " + Lang.GetItemNameValue(ModContent.ItemType<Items.Weapons.UltraShark>());
+			}
+		}
+		public override void OnChatButtonClicked(bool firstButton, ref bool shop) {
+			if (firstButton) {
+				// We want 3 different functionalities for chat buttons, so we use HasItem to change button 1 between a shop and upgrade action.
+				if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Weapons.UltraShark>())) {
+					Main.PlaySound(SoundID.Item37); // Reforge/Anvil sound
+					Main.npcChatText = $"I upgraded your {Lang.GetItemNameValue(ModContent.ItemType<Items.Weapons.UltraShark>())} to a Supreme Shark";
+					int UltraSharkItemIndex = Main.LocalPlayer.FindItem(ModContent.ItemType<Items.Weapons.UltraShark>());
+					Main.LocalPlayer.inventory[UltraSharkItemIndex].TurnToAir();
+					Main.LocalPlayer.QuickSpawnItem(ModContent.ItemType<Items.Weapons.SupremeShark>());
+					return;
+				}
+				shop = true;
+			}
+			else {
+				// If the 2nd button is pressed, open the inventory...
+				Main.playerInventory = true;
+				// remove the chat window...
+				Main.npcChatText = "";
+				// and start an instance of our UIState.
+				//GetInstance<ExampleMod>().ExamplePersonUserInterface.SetState(new UI.ExamplePersonUI());
+				// Note that even though we remove the chat window, Main.LocalPlayer.talkNPC will still be set correctly and we are still technically chatting with the npc.
+			}
+		}
+		public override void SetupShop(Chest shop, ref int nextSlot) {
+			shop.item[nextSlot].SetDefaults(ItemType<Items.Weapons.HighCallibreBullet>());
+			nextSlot++;
+			//Will add more stuff when i have more stuff.
+		}
+		public override void NPCLoot() {
+			var exampleModAsoc = ModLoader.GetMod("Examplemod");
+			if (exampleModAsoc != null) {
+				Item.NewItem(npc.getRect(), exampleModAsoc.ItemType("Exampleblock"));
+			}
+			else {
+				Item.NewItem(npc.getRect(), ItemID.MartianConduitPlating, 200);
+			}
+		}
+		public override bool CanGoToStatue(bool toKingStatue) {return false;}
+		public override void TownNPCAttackStrength(ref int damage, ref float knockback) {
+			damage = 5;
+			knockback = 1f;
+		}
+		public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown) {
+			cooldown = 10;
+			randExtraCooldown = 5;
+		}
+		public override void TownNPCAttackProj(ref int projType, ref int attackDelay) {
+			projType = ModContent.ProjectileType<Projectiles.Orbs>(); // TODO : Create a custom projectile for Giiit
+			attackDelay = 1;
+		}
+		public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset) {
+			multiplier = 18f;
+			randomOffset = 2f;
 		}
     }
 }
-*/
