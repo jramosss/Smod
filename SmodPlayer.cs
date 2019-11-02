@@ -31,7 +31,7 @@ namespace Smod {
             if ((proj.type == ProjectileID.Bullet || proj.type == ProjectileID.BulletHighVelocity || proj.type == ProjectileID.CrystalBullet 
                 || proj.type == ProjectileID.CursedBullet || proj.type == ProjectileID.IchorBullet)&& Main.rand.NextBool(25)){
                 player.immune = true;
-                player.immuneTime = 30;
+                player.immuneTime = 60;
                 player.immuneNoBlink = true;
                 Main.NewText("Invincible"); //Debugging
             }
@@ -48,10 +48,12 @@ namespace Smod {
                 }
                 public override void UpdateAccessory(Player player, bool hideVisual) {
                     player.GetModPlayer<SmodPlayer>().HolyGrace = true;
+                    player.GetModPlayer<SmodPlayer>().UpdateLifeRegen();
                 }
                 public override void Update(ref float gravity, ref float maxFallSpeed) {
                     Player player = Main.LocalPlayer;
                     player.GetModPlayer<SmodPlayer>().HolyGrace = true;
+                    player.GetModPlayer<SmodPlayer>().UpdateLifeRegen();
                 }
             }
         }
