@@ -2,6 +2,10 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using Smod.Projectiles;
+using static Terraria.ModLoader.ModContent;
 
 namespace Smod.Items.Weapons {
     public class SukiStaff: ModItem {
@@ -12,10 +16,10 @@ namespace Smod.Items.Weapons {
             Tooltip.SetDefault("Sukiiii");
         }
         public override void SetDefaults() {
-            item.damage = 0;
-            item.useAnimation = 25;
+            item.damage = 1;
+            item.useAnimation = 50;
             item.useStyle = 1;
-            item.useTime = 25;
+            item.useTime = 50;
             item.UseSound = SoundID.Item1; //Crear un sonido SUKII
             item.magic = true;
             item.noMelee = true;
@@ -23,22 +27,13 @@ namespace Smod.Items.Weapons {
 			item.height = 40;
             item.knockBack = 0;
             item.rare = 3;
+            item.mana = 10;
             item.autoReuse = false;
+            item.shoot = ProjectileType<Tornado>();
         }
-        public override void UseStyle(Player player) {
-            bool in_screen = true;
-            Vector2 TornadoPos = Main.MouseWorld;
-            for (int i = 0; i < 200; i++) {
-                in_screen = Main.npc[i].position.X <= Main.screenWidth + Main.screenPosition.X
-                            && Main.npc[i].position.Y <= Main.screenHeight  + Main.screenPosition.Y
-                            && Main.npc[i].position.X >= Main.screenPosition.X
-                            && Main.npc[i].position.Y >= Main.screenPosition.Y;
-                if (in_screen){
-                    Main.npc[i].position.X = TornadoPos.X;
-                    Main.npc[i].position.Y = TornadoPos.Y;
-                }
-            }
-        }
+        /*public override void UseStyle(Player player) {
+            Meterle alguna textura al tornado o algo como para q se note q estoy apretando
+        }*/
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.AdamantiteBar,20);

@@ -1,3 +1,4 @@
+/*
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
@@ -6,11 +7,9 @@ using System;
 namespace Smod.Npcs.Enemies {
     public class Dementor : ModNPC {
         public override void NPCLoot() {
-            /* 
             if (Main.rand.NextBool(70)){
                 Add a super weird item, probably a wand that is very useful to defeat MY boss
             }
-            */
             //else {
                 if (Main.rand.NextBool(5)){
                     Item.NewItem(npc.getRect(), ItemID.Obsidian);
@@ -43,3 +42,4 @@ namespace Smod.Npcs.Enemies {
 
     }
 }
+*/

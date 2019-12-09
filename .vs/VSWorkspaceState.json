@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Items",
+    "\\Items\\Weapons",
     "\\Projectiles"
   ],
-  "SelectedNode": "\\Projectiles\\Orbs.cs",
+  "SelectedNode": "\\Items\\Weapons\\SukiStaff.cs",
   "PreviewInSolutionExplorer": false
 }
