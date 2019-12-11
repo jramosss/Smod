@@ -37,6 +37,13 @@ namespace Smod.Items.Tools {
             Main.NewText("Boss: " + npc.boss);
             Main.NewText("X: " + npc.position.X + " Y: " + npc.position.Y);
         }
+        public void DisplayPlayerInfo(Player player) {
+            Main.NewText(player.name + " has: " + player.statLife);
+            Main.NewText(player.name + " has: " + player.statLifeMax + " max life");
+            Main.NewText(player.name + " velocity.X = " + player.velocity.X);
+            Main.NewText(player.name + " velocity.Y = " + player.velocity.Y);
+            Main.NewText(player.name + " movespeed = " + player.moveSpeed);
+        }
         public override bool UseItem(Player player) {
             Vector2 mousepos = Main.MouseWorld;
             NPC npc;
@@ -46,8 +53,13 @@ namespace Smod.Items.Tools {
                 mousepos = Main.MouseWorld;
                 npc = Main.npc[i];
                 //Main.NewText("Loop running");
-                if (mousepos.X >= npc.position.X && mousepos.X <= npc.position.X + npc.width && mousepos.Y >= npc.position.Y && mousepos.Y <= npc.position.Y + npc.height) {
+                if (mousepos.X >= npc.position.X && mousepos.X <= npc.position.X + npc.width && mousepos.Y >= npc.position.Y 
+                    && mousepos.Y <= npc.position.Y + npc.height) {
                     DisplayInfo(i);
+                }
+                else if (mousepos.X >= player.position.X && mousepos.X <= player.position.X + player.width && mousepos.Y >= player.position.Y 
+                    && mousepos.Y <= player.position.Y + player.height){
+                    DisplayPlayerInfo(player);
                 }
             }
             return true;

@@ -2,12 +2,10 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
-using Smod;
 using Terraria.DataStructures;
 namespace Smod {
     public class SmodPlayer : ModPlayer {
         public bool HolyGrace = true;
-
         public override void ResetEffects() {
             HolyGrace = false;
         }
