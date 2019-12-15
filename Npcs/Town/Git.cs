@@ -1,10 +1,7 @@
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Smod;
 using static Terraria.ModLoader.ModContent;
 
 namespace Smod.Npcs.Town {
@@ -102,7 +99,7 @@ namespace Smod.Npcs.Town {
 					{
 						// Main.npcChatCornerItem shows a single item in the corner, like the Angler Quest chat.
 						Main.npcChatCornerItem = ModContent.ItemType<Items.Weapons.UltraShark>() ;
-						return $"Hey, if you craft a [i:{ModContent.ItemType<Items.Weapons.UltraShark>()}], I can upgrade it for you. Wait, where did i hear that?";
+						return $"Hey, if you craft a [i:{ModContent.ItemType<Items.Weapons.UltraShark>()}], I can upgrade it for you. Wait, where did i hear that b4?";
 					}
 				default:
 					return "Dont make me angry, or i´ll delete all ur commits!";
@@ -162,7 +159,7 @@ namespace Smod.Npcs.Town {
 			randExtraCooldown = 5;
 		}
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay) {
-			projType = ModContent.ProjectileType<Projectiles.Orbs>(); // TODO : Create a custom projectile for Giiit
+			projType = ModContent.ProjectileType<Projectiles.Torna2>(); // TODO : Create a custom projectile for Giiit
 			attackDelay = 1;
 		}
 		public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset) {

@@ -23,33 +23,22 @@ namespace Smod.Projectiles {
             projectile.direction = (int)Main.MouseWorld.X;
             projectile.position = Main.MouseWorld;
         }
+        private List<Tuple<int,int>> id_and_damage = new List<Tuple<int,int>>();
         public override void Kill(int timeLeft) {
-            bool in_screen = false;
             foreach (NPC npc in Main.npc) {
-                in_screen = npc.position.X <= Main.screenWidth + Main.screenPosition.X
-                            && npc.position.Y <= Main.screenHeight  + Main.screenPosition.Y
-                            && npc.position.X >= Main.screenPosition.X
-                            && npc.position.Y >= Main.screenPosition.Y;
-                if(in_screen && npc.CanBeChasedBy(projectile) && !npc.boss) {
-                    foreach (Tuple<(int,int)> tuple in id_and_damage) {
-                        if (npc.type == tuple.Item1.Item1){
-
-                        }
+                foreach (Tuple<int,int> tuple in id_and_damage) {
+                    if (npc.whoAmI == tuple.Item1){
+                        npc.damage = tuple.Item2;
                     }
                 }
+            }
         }
-        private List<Tuple<(int,int)>> id_and_damage = new List<Tuple<(int,int)>>(); //ive made a mistake bc i created a list of tuples of tuples, but honestly
-                                                                                    //i dont know how to fix it so ill work this way
         public override void AI() {
-            bool in_screen = false;
+            Helpers inscr = new Helpers();
             foreach (NPC npc in Main.npc) {
-                in_screen = npc.position.X <= Main.screenWidth + Main.screenPosition.X
-                            && npc.position.Y <= Main.screenHeight  + Main.screenPosition.Y
-                            && npc.position.X >= Main.screenPosition.X
-                            && npc.position.Y >= Main.screenPosition.Y;
-                if(in_screen && npc.CanBeChasedBy(projectile) && !npc.boss) {
-                    npc.velocity += npc.DirectionTo(projectile.Center)*1.5f; //TODO: Hacerlo como un tornado, cosa que los npcs giren en torno al proyectil
-                    id_and_damage.Add(new Tuple<(int, int)>((npc.type,npc.damage)));
+                if(inscr.in_screen(npc) && npc.CanBeChasedBy(projectile) && !npc.boss && npc.damage > 0) {
+                    npc.velocity += npc.DirectionTo(projectile.Center)*2.5f; //TODO: Hacerlo como un tornado, cosa que los npcs giren en torno al proyectil
+                    id_and_damage.Add(new Tuple<int, int>(npc.whoAmI,npc.damage));
                     npc.damage = 0;
                 }
             }
