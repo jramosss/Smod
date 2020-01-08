@@ -1,10 +1,9 @@
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
 using System.Collections.Generic;
 using System;
-
-namespace Smod.Projectiles {
+namespace Smod.Projectiles
+{
     public class Tornado : ModProjectile {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Tornado Balls");
