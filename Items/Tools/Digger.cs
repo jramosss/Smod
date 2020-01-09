@@ -1,5 +1,5 @@
 //IDEA: Make a hole from surface to hell
-using Terraria;
+/*using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
@@ -35,4 +35,4 @@ namespace Smod.Items.Tools
             recipe.AddRecipe();
         }
     }
-}
+}*/

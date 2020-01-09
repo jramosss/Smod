@@ -15,13 +15,9 @@ namespace Smod.Projectiles {
             drawOriginOffsetY = 5;
             projectile.damage = 0;
         }
-        private static Player player = Main.LocalPlayer;
-        private Vector2 x = player.position;
+        Player player = Main.LocalPlayer;
         public override void AI() {
-            //var direction = player.DirectionTo(projectile.Center);
-            player.velocity.X -= (float)-(Math.Pow(x.Y,2));
-        }
-        public override void Kill(int timeLeft) {
+            player.velocity -= player.DirectionTo(projectile.Center);
         }
     }
 }
