@@ -19,7 +19,7 @@ namespace Smod.Items.Weapons {
 			item.knockBack = 1.2f;
 			item.value = 10;
 			item.rare = 2;
-			item.shoot = ProjectileID.BulletHighVelocity;   //The projectile shoot when your weapon using this ammo
+			item.shoot = ModContent.ProjectileType<Projectiles.HighCallibreProjectile>();   //The projectile shoot when your weapon using this ammo
 			item.shootSpeed = 18f;                  //The speed of the projectile
 			item.ammo = AmmoID.Bullet;              //The ammo class this ammo belongs to.
         }

@@ -5,7 +5,7 @@ using static Terraria.ModLoader.ModContent;
 using Smod.Projectiles;
 
 namespace Smod.Items.Weapons {
-    public class Skr : ModItem {
+    public class ExponentialShooter : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Exponential Shooter");
             Tooltip.SetDefault("Yells a weird word");

@@ -17,7 +17,8 @@ namespace Smod.Commands {
         public static bool Ciborg = NPC.downedPlantBoss;
         public static bool Pirate = NPC.downedPirates;
         public static bool TaxesCollector = NPC.taxCollector;
-        public static bool Git = Main.LocalPlayer.townNPCs >= 12 && Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Weapons.UltraShark>());
+        public static bool Git = Main.LocalPlayer.townNPCs >= 10 && Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Weapons.UltraShark>()) 
+                                 || Main.LocalPlayer.HasItem(ItemID.CellPhone);
         //public static bool Truffle =  NPC.spawn
         public static bool  IsChristmas () {
             DateTime date = DateTime.Now;

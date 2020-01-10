@@ -49,7 +49,7 @@ namespace Smod.Npcs.Town {
 		}
         public override bool CanTownNPCSpawn(int numTownNPCs, int money) {
 			Player player = Main.LocalPlayer;
-            if (player.HasItem(mod.ItemType("UltraShark")) || player.HasItem(ItemID.CellPhone) && player.activeNPCs >= 12) {
+            if (player.HasItem(ModContent.ItemType<Items.Weapons.UltraShark>()) || player.HasItem(ItemID.CellPhone) && player.townNPCs >= 10) {
                 return true;
             }
             return false;

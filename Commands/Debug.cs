@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
-using System.Linq
+using System.Linq;
 
 namespace Smod.Commands {
     public class Debug : ModCommand {
@@ -49,6 +49,20 @@ namespace Smod.Commands {
                     else {
                         Main.NewText("U meet all the requirements");
                     }
+                    break;
+                case "git":
+                    Main.NewText("Town NPCS: " + Main.LocalPlayer.townNPCs);
+                    Main.NewText("Player has cellphone: " + Main.LocalPlayer.HasItem(ItemID.CellPhone));
+                    Main.NewText("Player has UltraShark: " + Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Weapons.UltraShark>()));
+                    break;
+                case "direction":
+                    Main.NewText("Player direction: " + player.direction);
+                    break;
+                case "velocityx":
+                    Main.NewText("Player Velocity X: " + player.velocity.X);
+                    break;
+                case "velocityy":
+                    Main.NewText("Player Velocity Y: " + player.velocity.Y);
                     break;
             }
         }
