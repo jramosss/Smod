@@ -1,7 +1,4 @@
 using Terraria;
-using Terraria.ModLoader;
-using System.Collections.Generic;
-using System;
 
 namespace Smod {
     public class Helpers {
@@ -10,6 +7,11 @@ namespace Smod {
                    && npc.position.Y <= Main.screenHeight  + Main.screenPosition.Y
                    && npc.position.X >= Main.screenPosition.X
                    && npc.position.Y >= Main.screenPosition.Y;
+        }
+        public void GiveAllBuffs(Player player) {
+            for (int i = 1; i < 200; i++) {
+                player.AddBuff(i,100);
+            }
         }
     }
 }

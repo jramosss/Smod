@@ -16,7 +16,7 @@ namespace Smod.Items.Weapons {
 			item.shoot = ModContent.ProjectileType<Projectiles.AirPulse>();
 			item.width = 8;
 			item.height = 28;
-			item.maxStack = 30;
+			item.maxStack = 999;
 			item.consumable = true;
 			item.UseSound = SoundID.Item1;
 			item.useAnimation = 40;

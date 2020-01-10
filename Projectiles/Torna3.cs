@@ -1,8 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
-using System.Collections.Generic;
-using System;
-namespace Smod.Projectiles {
+namespace Smod.Projectiles
+{
     public class Torna3 : ModProjectile {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Torna3 Balls");

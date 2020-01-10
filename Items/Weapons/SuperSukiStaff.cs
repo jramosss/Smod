@@ -27,10 +27,10 @@ namespace Smod.Items.Weapons {
             item.shoot = ProjectileType<Torna3>();
         }
         public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.LunarBar,20);
-            recipe.AddIngredient(ItemType<MuySukii>());
-            recipe.AddTile(TileID.LunarCraftingStation);
+            AdvancedRecipe recipe = new AdvancedRecipe(mod,ModContent.NPCType<Npcs.Town.Git>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Weapons.MuySukii>());
+            recipe.AddIngredient(ItemID.LunarBar,15);
+            recipe.AddTile(TileID.LunarCraftingStation); //wouldn´t it be cool if i make my own tile?
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

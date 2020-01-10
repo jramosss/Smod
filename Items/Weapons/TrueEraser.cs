@@ -9,7 +9,7 @@ namespace Smod.Items.Weapons {
             Tooltip.SetDefault("Like the Eraser,... but true!");
         }
         public override void SetDefaults() {
-            item.damage = 100;
+            item.damage = 10;
             item.useAnimation = 25;
             item.useStyle = 1;
             item.useTime = 25;
