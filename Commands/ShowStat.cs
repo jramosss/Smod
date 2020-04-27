@@ -1,8 +1,8 @@
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
 
-namespace Smod.Commands {
+namespace Smod.Commands
+{
     public class ShowStat : ModCommand {
         public override CommandType Type => CommandType.World;
         public override string Usage => "ShowStat stat";

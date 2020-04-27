@@ -11,7 +11,7 @@ namespace Smod.Commands {
 			=> "buffme";
 
 		public override string Usage
-			=> "buffme args";
+			=> "buffme buff time";
 
 		public override string Description
 			=> "Buffs the player for each task combat/mining/clears";
@@ -19,22 +19,43 @@ namespace Smod.Commands {
         public override void Action(CommandCaller caller, string input, string[] args) {
             Player player = new Player();
             player = Main.LocalPlayer;
+            int time;
+            if(args[1] == null) time = 999999;
+            else time = int.Parse(args[1]);
             switch(args[0]){
                 case "mining":
-                    player.AddBuff(BuffID.Mining,40000);
-                    player.AddBuff(BuffID.Spelunker,40000);
-                    player.AddBuff(BuffID.Shine,40000);
+                    player.AddBuff(BuffID.Mining,time);
+                    player.AddBuff(BuffID.Spelunker,time);
+                    player.AddBuff(BuffID.Shine,time);
                     break;
                 case "combat":
-                    player.AddBuff(BuffID.Regeneration,40000);
-                    player.AddBuff(BuffID.Swiftness,40000);
-                    player.AddBuff(BuffID.WellFed,40000);
-                    player.AddBuff(BuffID.Wrath,40000);
-                    player.AddBuff(BuffID.Inferno,40000);
-                    player.AddBuff(BuffID.Honey,40000);
-                    player.AddBuff(BuffID.Heartreach,40000);
-                    player.AddBuff(BuffID.HeartLamp,40000);
-                    player.AddBuff(BuffID.Campfire,40000);
+                    player.AddBuff(BuffID.Regeneration,time);
+                    player.AddBuff(BuffID.Swiftness,time);
+                    player.AddBuff(BuffID.WellFed,time);
+                    player.AddBuff(BuffID.Wrath,time);
+                    player.AddBuff(BuffID.Inferno,time);
+                    player.AddBuff(BuffID.Honey,time);
+                    player.AddBuff(BuffID.Heartreach,time);
+                    player.AddBuff(BuffID.HeartLamp,time);
+                    player.AddBuff(BuffID.Campfire,time);
+                    break;
+                case "ranged":
+                    player.AddBuff(BuffID.AmmoBox,time);
+                    player.AddBuff(BuffID.Rage,time);
+                    goto case "combat";
+                case "summoner":
+                    player.AddBuff(BuffID.Summoning,time);
+                    break;
+                case "mage":
+                    player.AddBuff(BuffID.MagicPower,time);
+                    player.AddBuff(BuffID.Clairvoyance,time);
+                    break;
+                case "all":
+                    var help = new Helpers();
+                    help.GiveAllBuffs(Main.LocalPlayer);
+                    goto case "summoner";
+                case "saiyan":
+                    player.AddBuff(ModContent.BuffType<Buffs.UltraInstinct>(),9999);
                     break;
                 case "clear":
                     for (int i = player.buffType.Length - 1; i >= 0; i--) {
